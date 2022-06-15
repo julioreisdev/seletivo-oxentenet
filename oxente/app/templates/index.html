@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxente Animes</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barrio&family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Playball&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      opacity: 0.9;
+      font-family: sans-serif;
+    }
+
+    header h1 {
+      color: rgb(51, 37, 172);
+      font-size: 2.5rem;
+      padding: 1rem 10%;
+      font-family: 'Barrio', cursive;
+    }
+
+    header {
+      box-shadow: 0 1px 3px gray;
+    }
+
+    main {
+      padding: 1rem 10%;
+    }
+
+    .quantidade-animes {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 2px gray;
+    }
+
+    .quantidade-animes p {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+    }
+
+    .grafico-animes {
+      width: 49%;
+      padding: 0.5rem;
+      box-shadow: 0 0 2px gray;
+    }
+
+    .grafico-animes h3 {
+      margin-bottom: 1rem;
+    }
+
+    .grafico-animes div {
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .grafico-animes div h2 {
+      background-color: rgb(187, 184, 184);
+      color: rgb(187, 184, 184);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (min-width:830px) and (max-width:1000px) {
+
+      main,
+      header h1 {
+        padding: 1rem 2%;
+      }
+    }
+
+    @media (min-width:0) and (max-width:830px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .grafico-animes {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Oxente Animes</h1>
+  </header>
+  <main>
+    <div class="quantidade-animes">
+      <p><strong>{{quantidadeAnimes}}</strong> Animes disponíveis</p>
+    </div>
+    <div class="container">
+      <div class="grafico-animes animes">
+        <h3>Animes com maior avaliação</h3>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao1}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao2}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao3}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao4}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao5}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao6}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao7}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao8}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao9}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{animeMaiorAvaliacao10}}</p>
+        </div>
+      </div>
+      <div class="grafico-animes estudios">
+        <h3>Estúdios com mais animes</h3>
+        <div>
+          <h2></h2>
+          <p>{{estudio1}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{estudio2}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{estudio3}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{estudio4}}</p>
+        </div>
+        <div>
+          <h2></h2>
+          <p>{{estudio5}}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    let barra = document.querySelectorAll(".animes div");
+    let cont = 30;
+    for (let i = 0; i < barra.length; i++) {
+      for (let j = 0; j < cont; j++) {
+        barra[i].querySelector("h2").innerText += "-";
+      }
+      cont -= 3;
+    }
+    let barra2 = document.querySelectorAll(".estudios div");
+    let cont2 = 25;
+    for (let i = 0; i < barra2.length; i++) {
+      for (let j = 0; j < cont2; j++) {
+        barra2[i].querySelector("h2").innerText += "-";
+      }
+      cont2 -= 5;
+    }
+  </script>
+</body>
+
+</html>
