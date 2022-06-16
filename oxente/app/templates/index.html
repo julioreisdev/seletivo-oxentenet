@@ -1,196 +1,176 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oxente Animes</title>
-
+  <!-- CSS BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="shortcut icon" href="https://oxentenet.com/static/assets/images/favicon.png" type="image/x-icon">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Barrio&family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Playball&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      opacity: 0.9;
-      font-family: sans-serif;
-    }
-
-    header h1 {
-      color: rgb(51, 37, 172);
-      font-size: 2.5rem;
-      padding: 1rem 10%;
-      font-family: 'Barrio', cursive;
-    }
-
-    header {
-      box-shadow: 0 1px 3px gray;
-    }
-
     main {
-      padding: 1rem 10%;
+      padding: 0.9rem;
     }
 
-    .quantidade-animes {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 2px gray;
-    }
-
-    .quantidade-animes p {
-      font-size: 1.5rem;
-      padding: 0.5rem;
-    }
-
-    .grafico-animes {
-      width: 49%;
-      padding: 0.5rem;
-      box-shadow: 0 0 2px gray;
-    }
-
-    .grafico-animes h3 {
-      margin-bottom: 1rem;
-    }
-
-    .grafico-animes div {
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .grafico-animes div h2 {
-      background-color: rgb(187, 184, 184);
-      color: rgb(187, 184, 184);
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @media (min-width:830px) and (max-width:1000px) {
-
-      main,
-      header h1 {
-        padding: 1rem 2%;
-      }
-    }
-
-    @media (min-width:0) and (max-width:830px) {
-      .container {
+    @media (min-width: 0) and (max-width: 1000px) {
+      .coluna {
+        display: flex;
         flex-direction: column;
+        align-items: center;
       }
 
-      .grafico-animes {
-        width: 100%;
+      .coluna .grafico-animes, .grafico-estudios {
         margin-bottom: 1rem;
+        width: 80% !important;
+      }
+    }
+    @media (min-width: 0) and (max-width: 500px) {
+      .coluna .grafico-animes, .grafico-estudios {
+        margin-bottom: 1rem;
+        width: 100% !important;
       }
     }
   </style>
-
 </head>
 
 <body>
   <header>
-    <h1>Oxente Animes</h1>
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">
+          <img src="https://oxentenet.com/static/assets/images/favicon.png" alt="" width="30" height="24"
+            class="d-inline-block align-text-top">
+          Oxente Animes
+        </a>
+      </div>
+    </nav>
   </header>
   <main>
-    <div class="quantidade-animes">
-      <p><strong>{{quantidadeAnimes}}</strong> Animes disponíveis</p>
+    <div class="animes-disponiveis mb-2">
+      <div class="badge bg-primary text-wrap" style="width: 10rem;">
+        {{quantidadeAnimes}} Animes disponíveis
+      </div>
     </div>
-    <div class="container">
-      <div class="grafico-animes animes">
-        <h3>Animes com maior avaliação</h3>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao1}}</p>
+    <div class="graficos" style="width: 100%;">
+      <div class="d-inline-flex p-2 justify-content-between coluna" style="width: 100%;">
+        <div class="grafico-animes" style="width: 48%;">
+          <div>
+            <canvas id="animes"></canvas>
+          </div>
         </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao2}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao3}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao4}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao5}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao6}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao7}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao8}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao9}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{animeMaiorAvaliacao10}}</p>
+        <div class="grafico-estudios" style="width: 48%;">
+          <div>
+            <canvas id="estudios"></canvas>
+          </div>
         </div>
       </div>
-      <div class="grafico-animes estudios">
-        <h3>Estúdios com mais animes</h3>
-        <div>
-          <h2></h2>
-          <p>{{estudio1}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{estudio2}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{estudio3}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{estudio4}}</p>
-        </div>
-        <div>
-          <h2></h2>
-          <p>{{estudio5}}</p>
-        </div>
+    </div>
+    <div class="grafico-dados">
+      <div class="dados-animes" style="display: none;">
+        {% for i in animes %}
+          <p>{{i.name}}</p>
+          <h5>{{i.rated_by}}</h5>
+        {% endfor %}
+      </div>
+      <div class="dados-estudios" style="display: none;">
+        {% for i in estudios %}
+        <p>{{i.studio}}</p>
+        <h5>{{i.qtd}}</h5>
+        {% endfor %}
       </div>
     </div>
   </main>
-  <script>
-    let barra = document.querySelectorAll(".animes div");
-    let cont = 30;
-    for (let i = 0; i < barra.length; i++) {
-      for (let j = 0; j < cont; j++) {
-        barra[i].querySelector("h2").innerText += "-";
-      }
-      cont -= 3;
-    }
-    let barra2 = document.querySelectorAll(".estudios div");
-    let cont2 = 25;
-    for (let i = 0; i < barra2.length; i++) {
-      for (let j = 0; j < cont2; j++) {
-        barra2[i].querySelector("h2").innerText += "-";
-      }
-      cont2 -= 5;
-    }
+
+  <!-- JS BOOTSTRAP -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
   </script>
+  <!-- CHART JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const nomeEstudiosNode = document.querySelectorAll(".dados-estudios p");
+    const nomeEstudios = [];
+    for (let i = 0; i < nomeEstudiosNode.length; i++) {
+      nomeEstudios.push(nomeEstudiosNode[i].textContent);
+    }
+
+    const qtdEstudiosNode = document.querySelectorAll(".dados-estudios h5");
+    const qtdEstudios = [];
+    for (let i = 0; i < qtdEstudiosNode.length; i++) {
+      qtdEstudios.push(parseInt(qtdEstudiosNode[i].textContent));
+    }
+
+    const nomeAnimesNode = document.querySelectorAll(".dados-animes p");
+    const nomeAnimes = [];
+    for (let i = 0; i < nomeAnimesNode.length; i++) {
+      nomeAnimes.push(nomeAnimesNode[i].textContent);
+    }
+
+    const qtdAnimesNode = document.querySelectorAll(".dados-animes h5");
+    const qtdAnimes = [];
+    for (let i = 0; i < qtdAnimesNode.length; i++) {
+      qtdAnimes.push(parseInt(qtdAnimesNode[i].textContent));
+    }
+
+    const labelsAnimes = nomeAnimes;
+
+    const labelsEstudios = nomeEstudios;
+
+    const dataAnimes = {
+      labels: labelsAnimes,
+      datasets: [{
+        label: 'Avaliação do público',
+        backgroundColor: '#6495ED',
+        borderColor: 'rgb(255, 99, 132)',
+        data: qtdAnimes,
+      }]
+    };
+
+    const dataEstudios = {
+      labels: labelsEstudios,
+      datasets: [{
+        label: 'Quantidade de animes do estúdio',
+        backgroundColor: '#87CEEB',
+        borderColor: 'rgb(255, 99, 132)',
+        data: qtdEstudios,
+      }]
+    };
+
+    const configAnimes = {
+      type: 'bar',
+      data: dataAnimes,
+      options: {
+        indexAxis: 'y',
+      }
+    };
+
+    const configEstudios = {
+      type: 'bar',
+      data: dataEstudios,
+      options: {}
+    };
+  </script>
+  <script>
+    const animes = new Chart(
+      document.getElementById('animes'),
+      configAnimes
+    );
+    const estudios = new Chart(
+      document.getElementById('estudios'),
+      configEstudios
+    );
+  </script>
+
+
 </body>
 
 </html>
